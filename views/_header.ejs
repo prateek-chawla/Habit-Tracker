@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Poppins&family=Roboto&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
@@ -14,17 +15,41 @@
 
 <body>
     <main>
-        <!-- Navigation Pane -->
         <header>
             <div class="title">
                 Habit Tracker
             </div>
+
+            <!-- Navigation Pane -->
+
             <div class="nav-tray">
-                <div class="nav-item <%= path==='/'? 'active-tab' : 'inactive-tab' %>">
+
+                <!-- Home Button -->
+                <div class="nav-item <%= tabPath === 'home' ? 'active-tab' : 'inactive-tab' %>">
                     <a href="/">Home</a>
                 </div>
-                <div class="nav-item <%= path==='/my-habits'? 'active-tab' : 'inactive-tab' %>">
+
+                <!-- My Habits Button -->
+                <div class="nav-item <%= tabPath === 'my-habits' ? 'active-tab' : 'inactive-tab' %>">
                     <a href="/my-habits">My Habits</a>
+                </div>
+
+                <!-- Add Habit Button -->
+                <div class="add-btn-tab nav-item inactive-tab">
+                    <input type="checkbox" name="add-habit" id="add-habit-tab">
+                    <label id="add-habit-label" for="add-habit-tab">Add Habit</label>
+
+                    <!-- Hidden Add Habit Form -->
+                    <div class="add-habit">
+                        <form action="/add-habit" method="POST" class="add-habit-form">
+                            <input type="text" name="name" autocomplete="off" spellcheck="false"
+                                placeholder="Enter Habit Name . . . " required>
+                            <input type="date" name="date" required>
+                            <button type="submit" href="/add-habit">
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </header>

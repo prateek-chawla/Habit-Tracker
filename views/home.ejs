@@ -1,32 +1,44 @@
 <%- include('_header') %>
+
 <div class="cards-container">
+
     <% for (habit of tracker) { %>
-    <div class="card">
-        <div class="card-title">
-            <%= habit.name %>
+
+        <div class="card">
+
+            <div class="card-title <%= path.slice(11)===habit.name ? 'activeCard' : '' %>">
+                <%= habit.name %>
+            </div>
+
+            <% if (tabPath==='my-habits') { %>
+
+                <a href="/my-habits/habit/<%= habit.name %>" class="view-icon">
+                    View History
+                </a>
+
+            <% } else { %>
+
+                <div class="card-icons">
+                    <a href="/actions/complete/<%= habit.name %>+<%= path %>"
+                        class="complete-icon <%= habit.status==='complete'? 'active-icon' : ''%>">
+                        <i class="fas fa-check"></i>
+                    </a>
+                    <a href="/actions/incomplete/<%= habit.name %>+<%= path %>"
+                        class="incomplete-icon <%= habit.status==='incomplete'? 'active-icon' : ''%>">
+                        <i class="fas fa-times"></i>
+                    </a>
+                    <a href="/actions/unmarked/<%= habit.name %>+<%= path %>"
+                        class="unmarked-icon <%= habit.status==='unmarked'? 'active-icon' : ''%>">
+                        <i class="far fa-circle"></i>
+                    </a>
+                </div>
+
+            <% } %>
+
         </div>
-        <% if (path === '/my-habits') { %>
-        <a href="/my-habits/habit/<%= habit.name %>" class="view-icon">
-            View History
-        </a>
-        <% } else { %>
-        <div class="card-icons">
-            <a href="/actions/complete/<%= habit.name %>"
-                class="complete-icon <%= habit.status==='complete'? 'active-icon' : ''%>">
-                <i class="fas fa-check"></i>
-            </a>
-            <a href="/actions/incomplete/<%= habit.name %>"
-                class="incomplete-icon <%= habit.status==='incomplete'? 'active-icon' : ''%>">
-                <i class="fas fa-times"></i>
-            </a>
-            <a href="/actions/unmarked/<%= habit.name %>"
-                class="unmarked-icon <%= habit.status==='unmarked'? 'active-icon' : ''%>">
-                <i class="far fa-circle"></i>
-            </a>
-        </div>
-        <% } %>
-    </div>
+        
     <% } %>
 
 </div>
+
 <%- include('_footer') %>

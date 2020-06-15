@@ -1,1 +1,1 @@
-Simple To-Do List App with MongoDb/Node.js
+Simple Habit Tracker with MongoDb/Node.js

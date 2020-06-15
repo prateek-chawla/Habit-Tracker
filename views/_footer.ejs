@@ -1,19 +1,23 @@
-        <footer>
-            <ul class="week-tracker">
-                <% if(history && history.length > 0) { %>
-                    <div class="connector"></div>
-                    <% for( idx=0; idx < 7 ;idx++) { %>
-                        <li class="day <%= history[idx].status || 'umarked' %>">
-                            <!-- YYYY-MM-DD -->
-                            <a class="day-tracker" href="<%= history[idx].dateString %>">
-                                <%= history[idx].date %>
-                            </a>
-                        </li>
-                    <% } %>
-                <% } %>
-            </ul>
-        </footer>
+<footer>
+    <!-- Progress Bar -->
+    <ul class="week-tracker">
+        <% if(history && history.length > 0) { %>
+            <!-- Horizontal Connector Line -->
+            <div class="connector"></div>
+            <% for( idx=0; idx < 7 ;idx++) { %>
+                <li
+                    class="day <%= history[idx].status || 'umarked' %>
+                        <%= path === history[idx].dateString ? 'activeDate' : '' %>">
+                    <!-- YYYY-MM-DD -->
+                    <a class="day-tracker" href="<%= history[idx].dateString %>">
+                        <%= history[idx].date %>
+                    </a>
+                </li>
+            <% } %>
+        <% } %>
+    </ul>
+</footer>
 
-    </body>
+</body>
 
 </html>

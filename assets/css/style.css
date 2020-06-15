@@ -53,8 +53,14 @@ footer {
 	color: ivory;
 	background-color: var(--dark-blue-clr);
 	border-bottom: 2px solid black;
+	position: relative;
 }
 
+footer {
+	justify-content: center;
+}
+
+/* Habit Tracker Title */
 .title {
 	font-family: "Patua One", cursive;
 	font-size: 2rem;
@@ -82,12 +88,12 @@ footer {
 	background-color: #ccc;
 	border: 1px solid black;
 	display: flex;
-
 	overflow: hidden;
 	padding: 0;
 	margin-bottom: 0.7rem;
 }
 
+/* Habit Title */
 .card-title {
 	width: 70%;
 	text-align: center;
@@ -100,6 +106,7 @@ footer {
 	text-align: left;
 }
 
+/* Complete , Incomplete and Unmarked Icons */
 .card-icons {
 	width: 30%;
 	line-height: 2rem;
@@ -113,31 +120,37 @@ footer {
 	box-sizing: border-box;
 }
 
+/* Card Icons */
+
 .complete-icon {
 	background-color: yellowgreen;
 	border-left: 1px solid black;
 }
+
 .incomplete-icon {
 	background-color: crimson;
 }
+
 .unmarked-icon {
 	background-color: var(--light-blue-clr);
 }
+
+/* Navigation Pane */
+
 .nav-tray {
 	display: flex;
-	width: 35%;
-	margin-right: 0rem;
+	width: 50%;
+	margin-right: -0.5rem;
 }
 
+/* Navigation Tabs */
 .nav-item {
 	margin-left: 1rem;
 	border-top: 0.1rem solid transparent;
 	transition: 0.15s ease;
 }
 
-footer {
-	justify-content: center;
-}
+/* Bottom Progress Bar */
 .week-tracker {
 	width: 80%;
 	list-style: none;
@@ -148,16 +161,18 @@ footer {
 	padding: 0;
 	color: ivory;
 }
+
+/* Horizontal Line Connector */
 .connector {
 	height: 3px;
 	width: 95%;
 	background-color: lightgrey;
-
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
 .day {
 	border-radius: 50%;
 	border: 2px solid lightgrey;
@@ -168,22 +183,6 @@ footer {
 	text-align: center;
 	font-size: 0.8rem;
 	z-index: 1;
-}
-
-.complete {
-	background-color: seagreen;
-}
-
-.incomplete {
-	background-color: firebrick;
-}
-
-.active-tab {
-	border-top: 0.1rem solid var(--light-blue-clr);
-}
-
-.inactive-tab {
-	opacity: 0.5;
 }
 
 .nav-item:hover {
@@ -201,6 +200,106 @@ footer {
 
 .active-icon {
 	color: ivory;
+}
+
+.add-btn-tab,
+#add-habit-label {
+	cursor: pointer;
+}
+
+.add-habit {
+	position: absolute;
+	top: 100%;
+	width: 80%;
+	left: 17%;
+	background-color: var(--med-blue-clr);
+	height: 100%;
+	border-bottom-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+	justify-content: center;
+	display: none;
+}
+
+.add-habit::after {
+	content: "";
+	height: 0;
+	width: 0;
+	border: none;
+	position: absolute;
+	top: -27%;
+	right: 13%;
+	border-bottom: 20px solid var(--med-blue-clr);
+	border-right: 20px solid transparent;
+	border-left: 20px solid transparent;
+}
+
+.add-habit-form {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	align-content: flex-end;
+	font-size: 1.5rem;
+}
+
+.add-habit-form input {
+	background-color: inherit;
+	outline: none;
+	border: none;
+	color: ivory;
+	font-family: "Poppins", sans-serif;
+}
+
+.add-habit-form input::placeholder {
+	color: ivory;
+	font-family: "Poppins", sans-serif;
+}
+
+/* Checkbox Hack */
+#add-habit-tab:checked ~ .add-habit {
+	display: block;
+}
+
+.add-btn-tab input[type="checkbox"] {
+	display: none;
+}
+
+.add-habit-form button {
+	color: ivory;
+	cursor: pointer;
+	font-size: 1.5rem;
+	height: 100%;
+	width: fit-content;
+	border: none;
+	outline: none;
+	background-color: transparent;
+}
+
+/* Util  */
+
+.activeDate {
+	border: 2px solid yellow;
+	box-shadow: 0px 0px 4px ivory inset;
+}
+
+.activeCard {
+	border-left: 10px solid var(--gunmetal-clr);
+}
+
+.complete {
+	background-color: seagreen;
+}
+
+.incomplete {
+	background-color: firebrick;
+}
+
+.active-tab {
+	border-top: 0.1rem solid var(--light-blue-clr);
+}
+
+.inactive-tab {
+	opacity: 0.5;
 }
 
 /* ScrollBar */
