@@ -7,48 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Poppins&family=Roboto&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/todo-list.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-
-    <title>To Do</title>
+    <title>Habit Tracker</title>
 </head>
 
 <body>
-    <!-- App Area -->
     <main>
         <!-- Navigation Pane -->
-        <div class="left-pane">
+        <header>
             <div class="title">
-                To-Do App
+                Habit Tracker
             </div>
-            <!-- Add ToDo Btn -->
-            <div class="add-btn">
-                <a id="add-todo" href="/">
-                    <i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <!-- Navigation Links -->
             <div class="nav-tray">
-                <ul class="nav">
-                    <!-- Navigation Tabs -->
-                    <% const navigationTabs = ['all','pending','completed','general','work','personal'] %>
-                    <!-- Iterate over each Navigation Tab and create list item -->
-                    <% for (tab of navigationTabs ) {%>
-                        <li>
-                            <% const tabPath = '/'+tab %>
-                            <!-- Add Active Class to Active Tab -->
-                            <a class="<%= path===tabPath ? 'active' : '' %>" href="/view/<%= tab %>">
-                                <%= tab %>
-                                <!-- Display ToDos Count for Active Tab -->
-                                <% if(path===tabPath && todos.length>0) { %>
-                                    <div class="todo-count">
-                                        <%= todos.length %>
-                                    </div>
-                                <% } %>
-                            </a>
-                        </li>
-                    <% } %>
-                </ul>
+                <div class="nav-item <%= path==='/'? 'active-tab' : 'inactive-tab' %>">
+                    <a href="/">Home</a>
+                </div>
+                <div class="nav-item <%= path==='/my-habits'? 'active-tab' : 'inactive-tab' %>">
+                    <a href="/my-habits">My Habits</a>
+                </div>
             </div>
-        </div>
+        </header>

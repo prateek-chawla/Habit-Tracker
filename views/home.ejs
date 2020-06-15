@@ -1,32 +1,32 @@
 <%- include('_header') %>
+<div class="cards-container">
+    <% for (habit of tracker) { %>
+    <div class="card">
+        <div class="card-title">
+            <%= habit.name %>
+        </div>
+        <% if (path === '/my-habits') { %>
+        <a href="/my-habits/habit/<%= habit.name %>" class="view-icon">
+            View History
+        </a>
+        <% } else { %>
+        <div class="card-icons">
+            <a href="/actions/complete/<%= habit.name %>"
+                class="complete-icon <%= habit.status==='complete'? 'active-icon' : ''%>">
+                <i class="fas fa-check"></i>
+            </a>
+            <a href="/actions/incomplete/<%= habit.name %>"
+                class="incomplete-icon <%= habit.status==='incomplete'? 'active-icon' : ''%>">
+                <i class="fas fa-times"></i>
+            </a>
+            <a href="/actions/unmarked/<%= habit.name %>"
+                class="unmarked-icon <%= habit.status==='unmarked'? 'active-icon' : ''%>">
+                <i class="far fa-circle"></i>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
 
-<!-- Input ToDo Form -->
-<div class="right-pane">
-    <form action="/todo/add" method="POST" id="todo-form">
-        <!-- Description -->
-        <div class="desc">
-            <input autocomplete="off" type="text" name="desc" id="todo-desc" placeholder="Add Description" required>
-            <label for="todo-desc">Description</label>
-        </div>
-        <!-- Due Date -->
-        <div class="date">
-            <input type="date" name="date" id="todo-date">
-            <label for="todo-date">Due Date</label>
-        </div>
-        <!-- Category - General, Work, Personal -->
-        <div class="category">
-            <select name="category" id="todo-category" required>
-                <option value="" disabled selected>Choose a Category</option>
-                <option value="General">General</option>
-                <option value="Personal">Personal</option>
-                <option value="Work">Work</option>
-            </select>
-            <label for="todo-category">Category</label>
-        </div>
-        <!-- Submit Button -->
-        <button class="submit-todo" type="submit">
-            <a class="submit-todo-btn" href=""><i class="far fa-check-circle"></i></a>
-        </button>
-    </form>
 </div>
 <%- include('_footer') %>

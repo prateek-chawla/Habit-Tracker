@@ -30,248 +30,193 @@ main {
 	border: 2px solid black;
 	display: flex;
 	flex-wrap: nowrap;
+	flex-direction: column;
 	align-items: center;
 	border-radius: 1rem;
 	overflow: hidden;
 	box-shadow: 0 0 6px black;
-}
-
-.left-pane,
-.right-pane {
-	padding: 1rem;
-}
-
-/* Navigation Pane */
-.left-pane {
-	display: flex;
-	flex-direction: row;
-	background-color: var(--gunmetal-clr);
-	color: ivory;
-	align-items: center;
-	height: 100%;
-	width: 30%;
-	padding: 0;
-	flex-wrap: wrap;
-	border-right: 3px solid black;
-	overflow: hidden;
-	position: relative;
-}
-
-.left-pane * {
-	width: 100%;
-	margin: 0;
-}
-
-/* App Title - Todo App */
-.title {
-	font-family: "Patua One", cursive;
-	width: 100%;
-	height: 30%;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: center;
-	border-bottom: 2px solid black;
-	text-align: center;
-	font-size: 2rem;
-	color: ivory;
-	background-color: var(--dark-blue-clr);
-}
-
-.add-btn {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 1.3rem;
-	height: 10%;
-	position: absolute;
-	top: 30%;
-	transform: translateY(-90%);
-}
-
-#add-todo {
-	border-radius: 50%;
-	width: fit-content;
-	height: fit-content;
-	padding: 0.4rem 0.55rem 0.3rem;
-	border: 1.5px solid ivory;
-	font-size: 1.1rem;
-	background-color: var(--red-clr);
-}
-
-#add-todo:hover {
-	background-color: ivory;
-	color: var(--gunmetal-clr);
-}
-
-#add-todo i {
-	transition: transform 0.3s ease;
-}
-
-#add-todo:hover i {
-	transform: scale(1.3);
+	font-family: "Poppins", sans-serif;
 }
 
 a {
 	text-decoration: none;
+	color: inherit;
+}
+
+header,
+footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 15%;
+	color: ivory;
+	background-color: var(--dark-blue-clr);
+	border-bottom: 2px solid black;
+}
+
+.title {
+	font-family: "Patua One", cursive;
+	font-size: 2rem;
+	margin-left: 3.5rem;
+}
+
+.cards-container {
+	display: flex;
+	border: 1px solid black;
+	width: 100%;
+	height: 70%;
+	box-sizing: border-box;
+	justify-content: center;
+	align-content: flex-start;
+	padding: 1.5rem;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+	flex-grow: 1;
+}
+
+.card {
+	width: 90%;
+	height: 2rem;
+	border-radius: 8px;
+	background-color: #ccc;
+	border: 1px solid black;
+	display: flex;
+
+	overflow: hidden;
+	padding: 0;
+	margin-bottom: 0.7rem;
+}
+
+.card-title {
+	width: 70%;
+	text-align: center;
+	height: 2rem;
+	line-height: 2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0 1rem;
+	text-align: left;
+}
+
+.card-icons {
+	width: 30%;
+	line-height: 2rem;
+	display: flex;
+	height: 2rem;
+}
+
+.card-icons a {
+	width: 34%;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.complete-icon {
+	background-color: yellowgreen;
+	border-left: 1px solid black;
+}
+.incomplete-icon {
+	background-color: crimson;
+}
+.unmarked-icon {
+	background-color: var(--light-blue-clr);
+}
+.nav-tray {
+	display: flex;
+	width: 35%;
+	margin-right: 0rem;
+}
+
+.nav-item {
+	margin-left: 1rem;
+	border-top: 0.1rem solid transparent;
+	transition: 0.15s ease;
+}
+
+footer {
+	justify-content: center;
+}
+.week-tracker {
+	width: 80%;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	padding: 0;
+	color: ivory;
+}
+.connector {
+	height: 3px;
+	width: 95%;
+	background-color: lightgrey;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.day {
+	border-radius: 50%;
+	border: 2px solid lightgrey;
+	height: 2rem;
+	width: 2rem;
+	line-height: 2rem;
+	background-color: var(--gunmetal-clr);
+	text-align: center;
+	font-size: 0.8rem;
+	z-index: 1;
+}
+
+.complete {
+	background-color: seagreen;
+}
+
+.incomplete {
+	background-color: firebrick;
+}
+
+.active-tab {
+	border-top: 0.1rem solid var(--light-blue-clr);
+}
+
+.inactive-tab {
+	opacity: 0.5;
+}
+
+.nav-item:hover {
+	border-top: 0.1rem solid var(--med-blue-clr);
+	opacity: 1;
+}
+
+.view-icon {
+	background-color: var(--gunmetal-clr);
+	color: ivory;
+	width: 30%;
+	text-align: center;
+	line-height: 2rem;
+}
+
+.active-icon {
 	color: ivory;
 }
 
-/* Navigation Links */
-.nav-tray {
-	height: 70%;
-	display: flex;
-	align-items: center;
-	list-style: none;
-	font-size: 1rem;
-	font-family: "Poppins", sans-serif;
+/* ScrollBar */
+
+::-webkit-scrollbar {
+	width: 0.5rem;
 }
 
-.nav {
-	padding: 0.5rem;
-	padding-left: 1.5rem;
+::-webkit-scrollbar-track {
+	background: transparent;
 }
 
-.nav li {
-	display: flex;
-	margin-top: 1rem;
-	flex-wrap: wrap;
-	align-items: center;
-	width: 100%;
+::-webkit-scrollbar-thumb {
+	background: var(--red-clr);
 }
 
-.nav li a {
-	border-left: 0.25rem solid transparent;
-	padding-left: 0.8rem;
-	position: relative;
-	width: 90%;
-	text-transform: capitalize;
-}
-
-.nav li:hover {
-	border-left: 4px solid var(--light-clr);
-}
-
-/* Active Navigation Tab */
-.active {
-	border-left: 0.25rem solid var(--light-blue-clr) !important;
-	padding-left: 0.2rem;
-	color: var(--light-blue-clr);
-}
-
-/* Todos List Counter */
-.todo-count {
-	font-size: 0.8rem;
-	width: 2.5rem;
-	position: absolute;
-	top: 50%;
-	left: 90%;
-	transform: translate(-60%, -50%);
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	color: var(--grey-clr);
-}
-
-/* Right Pane */
-.right-pane {
-	display: flex;
-	height: 100%;
-	width: 70%;
-	justify-content: flex-start;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-
-/* Add ToDo Form */
-#todo-form {
-	height: 50%;
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	align-content: center;
-}
-
-#todo-form input,
-.category select {
-	height: 100%;
-	width: 90%;
-	background-color: inherit;
-	padding-top: 0.8rem;
-	padding-right: 1rem;
-	padding-left: 0.8rem;
-	font-family: "Poppins", sans-serif;
-	border: none;
-	font-size: 1.1rem;
-}
-
-select option{
-	background-color: #ddd;
-	font-size: 0.9rem;
-}
-
-#todo-form input:focus,
-.category select:focus {
-	outline: none;
-}
-
-/* Decrease Label Font Size when Input is focussed/valid */
-#todo-form input:focus + label,
-#todo-form input:valid + label,
-.category select:focus + label,
-.category select:valid + label {
-	color: var(--med-blue-clr);
-	border-bottom: 1px solid var(--grey-clr);
-	font-size: 0.6rem;
-}
-
-/* Todo Inputs */
-.desc,
-.category,
-.date {
-	position: relative;
-	width: 100%;
-	height: 30%;
-	margin: 0;
-	border: 1px solid var(--grey-clr);
-}
-
-.desc {
-	border-bottom: none;
-}
-
-#todo-desc {
-	width: 100%;
-}
-
-label {
-	position: absolute;
-	top: 0.5rem;
-	left: 0.8rem;
-	font-size: 0.8rem;
-	font-family: "Poppins", sans-serif;
-	pointer-events: none;
-}
-
-/* Submit Btn */
-.submit-todo {
-	background-color: inherit;
-	outline: none;
-	border: none;
-	width: 100%;
-	padding-top: 2rem;
-}
-
-.submit-todo-btn {
-	color: var(--gunmetal-clr);
-	font-size: 3rem;
-	cursor: pointer;
-}
-
-.submit-todo-btn:hover {
-	color: green;
+::-webkit-scrollbar-thumb:hover {
+	background: grey;
 }

@@ -1,3 +1,19 @@
-        </main>
+        <footer>
+            <ul class="week-tracker">
+                <% if(history && history.length > 0) { %>
+                    <div class="connector"></div>
+                    <% for( idx=0; idx < 7 ;idx++) { %>
+                        <li class="day <%= history[idx].status || 'umarked' %>">
+                            <!-- YYYY-MM-DD -->
+                            <a class="day-tracker" href="<%= history[idx].dateString %>">
+                                <%= history[idx].date %>
+                            </a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </footer>
+
     </body>
+
 </html>

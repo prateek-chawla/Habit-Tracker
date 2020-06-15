@@ -13,21 +13,28 @@ app.use(express.urlencoded());
 app.use(express.static("assets"));
 
 // Import Routes
-const viewRoutes = require("./routes/view-routes");
-const deleteRoutes = require("./routes/delete-routes");
-const todoRoutes = require("./routes/todo-routes");
+const myHabbitsRoutes = require("./routes/my-habits-routes");
+const homeRoutes = require("./routes/home-routes");
+
+//Utils
+const initialiseTracker = require("./utils/initialiseDB");
 
 // Setup Routes
-app.use("/view", viewRoutes);
-app.use("/delete", deleteRoutes);
-app.use("/todo", todoRoutes);
+app.use("/my-habits", myHabbitsRoutes);
 
 // Render Home Page
+app.use("/date", homeRoutes);
+
 app.get("/", (req, res) => {
-	res.render("home", { path: req.path });
+	today = new Date();
+	dateString = today.toISOString().split("T")[0];
+	res.redirect(`/date/${dateString}`);
 });
 
 app.listen(port, err => {
 	if (err) console.log(err);
-	else console.log(`Server Listening on port ${port}`);
+	else {
+		console.log(`Server Listening on port ${port}`);
+		initialiseTracker();
+	}
 });
